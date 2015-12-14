@@ -1,4 +1,8 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="telephone=no" name="format-detection"/><meta name="description" content="Welcome to Johnny's world."/><title>#转#时间复杂度与空间复杂度 | Johnny Mao's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"/><link rel="stylesheet" type="text/css" href="/css/pure-min.css"/><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"/><link rel="stylesheet" type="text/css" href="/css/style.css"/><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">#转#时间复杂度与空间复杂度</h1><a id="logo" href="/">Johnny Mao's blog</a><p class="description">Be Perseverance</p></div><div id="nav-menu"><a href="/" class="current"><i class="icon-home"> Home</i></a><a href="/archives/"><i class="icon-archive"> Archive</i></a><a href="/about/"><i class="icon-about"> About</i></a><a href="/atom.xml"><i class="icon-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">#转#时间复杂度与空间复杂度</h1><div class="post-meta">2015-12-14 | <span class="categories">Categorized in<a href="/categories/Algorithm/"> Algorithm</a></span></div><span data-disqus-identifier="2015/12/14/转-时间复杂度与空间复杂度/" class="disqus-comment-count"></span><div class="post-content"><h4>求解算法的时间复杂度的具体步骤</h4>
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="telephone=no" name="format-detection"/><meta name="description" content="Welcome to Johnny's world."/><title>#转#时间复杂度与空间复杂度 | Johnny Mao's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"/><link rel="stylesheet" type="text/css" href="/css/pure-min.css"/><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"/><link rel="stylesheet" type="text/css" href="/css/style.css"/><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">#转#时间复杂度与空间复杂度</h1><a id="logo" href="/">Johnny Mao's blog</a><p class="description">Be Perseverance</p></div><div id="nav-menu"><a href="/" class="current"><i class="icon-home"> Home</i></a><a href="/archives/"><i class="icon-archive"> Archive</i></a><a href="/about/"><i class="icon-about"> About</i></a><a href="/atom.xml"><i class="icon-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">#转#时间复杂度与空间复杂度</h1><div class="post-meta">2015-12-14 | <span class="categories">Categorized in<a href="/categories/Algorithm/"> Algorithm</a></span></div><span data-disqus-identifier="2015/12/14/转-时间复杂度与空间复杂度/" class="disqus-comment-count"></span><div class="post-content"><p>这篇博客主要整理了一些关于时间复杂度和空间复杂度的知识点，转自CSDN: http://blog.csdn.net/zolalad/article/details/11848739</p>
+<p>关于时间复杂度和空间复杂度的定义见wikipedia<br>
+传送门：<br>
+https://en.wikipedia.org/wiki/Time_complexity</p>
+<h4>求解算法的时间复杂度的具体步骤</h4>
 <ul>
 <li><strong>找出算法中的基本语句；</strong><br>
 算法中执行次数最多的那条语句就是基本语句，通常是最内层循环的循环体。</li>
@@ -26,52 +30,55 @@
 另外还有以下2个运算法则:(1) 若g(n)=O(f(n)),则O(f(n))+ O(g(n))= O(f(n))；(2) O(Cf(n)) = O(f(n)),其中C是一个正常数</li>
 </ol>
 <h3>下面分别对几个常见的时间复杂度进行示例说明：</h3>
-<p><strong>(1)、O(1)</strong></p>
-<p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  Temp=<span class="built_in">i</span>; </span><br><span class="line">  <span class="built_in">i</span>=<span class="built_in">j</span>; </span><br><span class="line">  <span class="built_in">j</span>=temp;</span><br><span class="line">```     </span><br><span class="line"></span><br><span class="line">以上三条单个语句的频度均为<span class="number">1</span>，该程序段的执行时间是一个与问题规模n无关的常数。算法的时间复杂度为常数阶，记作T(n)=O(<span class="number">1</span>)。注意：如果算法的执行时间不随着问题规模n的增加而增长，即使算法中有上千条语句，其执行时间也不过是一个较大的常数。此类算法的时间复杂度是O(<span class="number">1</span>)。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**(<span class="number">2</span>)、O(n2)**  </span><br><span class="line"></span><br><span class="line"><span class="number">2.1</span>. 交换<span class="built_in">i</span>和<span class="built_in">j</span>的内容</span><br></pre></td></tr></table></figure></p>
-<p>sum=0；                 （一次）<br>
-for(i=1;i&lt;=n;i++)     （n+1次）<br>
-for(j=1;j&lt;=n;j++) （n2次）<br>
-sum++；            （n2次)
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">解：因为Θ(<span class="number">2</span>n2+n+<span class="number">1</span>)=n2（Θ即：去低阶项，去掉常数项，去掉高阶项的常参得到），所以<span class="function"><span class="title">T</span><span class="params">(n)</span></span>= =<span class="function"><span class="title">O</span><span class="params">(n2)</span></span>；  </span><br><span class="line"></span><br><span class="line"><span class="number">2.2</span>.</span><br></pre></td></tr></table></figure></p>
-<p>for (i=1;i&lt;n;i++)<br>
-{<br>
-y=y+1;         ①<br>
-for (j=0;j&lt;=(2*n);j++)<br>
-x++;         ②<br>
-}
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">            </span><br><span class="line">解： 语句<span class="number">1</span>的频度是n-<span class="number">1</span></span><br><span class="line">          语句<span class="number">2</span>的频度是(n-<span class="number">1</span>) * (<span class="number">2</span>n+<span class="number">1</span>)=<span class="number">2</span>n2-n-<span class="number">1</span></span><br><span class="line">          f(n)=<span class="number">2</span>n2-n-<span class="number">1</span>+(n-<span class="number">1</span>)=<span class="number">2</span>n2-<span class="number">2</span>；</span><br><span class="line">        又Θ(<span class="number">2</span>n2-<span class="number">2</span>)=n2</span><br><span class="line">          该程序的时间复杂度T(n)=O(n2).    </span><br><span class="line">　　一般情况下，对步进循环语句只需考虑循环体中语句的执行次数，忽略该语句中步长加<span class="number">1</span>、终值判别、控制转移等成分，当有若干个循环语句时，算法的时间复杂度是由嵌套层数最多的循环语句中最内层语句的频度f(n)决定的。       </span><br><span class="line">**(<span class="number">3</span>)、O(n)**</span><br></pre></td></tr></table></figure></p>
-<p>a=0;<br>
-b=1;         ①<br>
-for (i=1;i&lt;=n;i++) ②<br>
-{<br>
-s=a+b;　　　　③<br>
-b=a;　　　　　④<br>
-a=s;　　　　　⑤<br>
-}
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">解： 语句<span class="number">1</span>的频度：<span class="number">2</span>,        </span><br><span class="line">           语句<span class="number">2</span>的频度： n,        </span><br><span class="line">          语句<span class="number">3</span>的频度： n-<span class="number">1</span>,        </span><br><span class="line">          语句<span class="number">4</span>的频度：n-<span class="number">1</span>,    </span><br><span class="line">          语句<span class="number">5</span>的频度：n-<span class="number">1</span>,                                  </span><br><span class="line">          T(n)=<span class="number">2</span>+n+<span class="number">3</span>(n-<span class="number">1</span>)=<span class="number">4</span>n-<span class="number">1</span>=O(n).</span><br><span class="line">          </span><br><span class="line">          </span><br><span class="line">**(<span class="number">4</span>)、O(log2n)**</span><br></pre></td></tr></table></figure></p>
-<p>i=1;     ①<br>
-hile (i&lt;=n)<br>
-i=i*2; ②
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">解： 语句1的频度是1,  </span><br><span class="line">          设语句2的频度是<span class="literal">f</span>(<span class="keyword">n</span>),   则：2^<span class="literal">f</span>(<span class="keyword">n</span>)&lt;=<span class="keyword">n</span>;<span class="literal">f</span>(<span class="keyword">n</span>)&lt;=log2n    </span><br><span class="line">          取最大值<span class="literal">f</span>(<span class="keyword">n</span>)=log2n,</span><br><span class="line">          T(<span class="keyword">n</span>)=O(log2n )</span><br><span class="line"></span><br><span class="line"><span class="comment">**(5)、O(n3)**</span></span><br></pre></td></tr></table></figure></p>
-<p>for(i=0;i&lt;n;i++)<br>
-{<br>
-for(j=0;j&lt;i;j++)<br>
-{<br>
-for(k=0;k&lt;j;k++)<br>
-x=x+2;<br>
-}<br>
-}</p>
-<pre><code> 
-解：当i=m, j=k的时候,内层循环的次数为k当i=m时, j 可以取 0,1,...,m-1 , 所以这里最内循环共进行了0+1+...+m-1=(m-1)m/2次所以,i从0取到n, 则循环共进行了: 0+(1-1)*1/2+...+(n-1)n/2=n(n+1)(n-1)/6所以时间复杂度为O(n3).
-
-* 常用的算法的时间复杂度和空间复杂度:  
-  一个经验规则：其中c是一个常量，如果一个算法的复杂度为c 、 log2n 、n 、 n*log2n ,那么这个算法时间效率比较高 ，如果是2n ,3n ,n!，那么稍微大一些的n就会令这个算法不能动了，居于中间的几个则差强人意。  
-  算法时间复杂度分析是一个很重要的问题，任何一个程序员都应该熟练掌握其概念和基本方法，而且要善于从数学层面上探寻其本质，才能准确理解其内涵。  
-  
-#### 算法的空间复杂度  
-类似于时间复杂度的讨论，一个算法的空间复杂度(Space Complexity)S(n)定义为该算法所耗费的存储空间，它也是问题规模n的函数。渐近空间复杂度也常常简称为空间复杂度。  
-空间复杂度(Space Complexity)是对一个算法在运行过程中临时占用存储空间大小的量度。一个算法在计算机存储器上所占用的存储空间，包括存储算法本身所占用的存储空间，算法的输入输出数据所占用的存储空间和算法在运行过程中临时占用的存储空间这三个方面。算法的输入输出数据所占用的存储空间是由要解决的问题决定的，是通过参数表由调用函数传递而来的，它不随本算法的不同而改变。存储算法本身所占用的存储空间与算法书写的长短成正比，要压缩这方面的存储空间，就必须编写出较短的算法。算法在运行过程中临时占用的存储空间随算法的不同而异，有的算法只需要占用少量的临时工作单元，而且不随问题规模的大小而改变，我们称这种算法是“就地\&quot;进行的，是节省存储的算法，如这一节介绍过的几个算法都是如此；有的算法需要占用的临时工作单元数与解决问题的规模n有关，它随着n的增大而增大，当n较大时，将占用较多的存储单元，例如将在第九章介绍的快速排序和归并排序算法就属于这种情况。  
-如当一个算法的空间复杂度为一个常量，即不随被处理数据量n的大小而改变时，可表示为O(1)；当一个算法的空间复杂度与以2为底的n的对数成正比时，可表示为0(10g2n)；当一个算法的空I司复杂度与n成线性比例关系时，可表示为0(n).若形参为数组，则只需要为它分配一个存储由实参传送来的一个地址指针的空间，即一个机器字长空间；若形参为引用方式，则也只需要为其分配存储一个地址的空间，用它来存储对应实参变量的地址，以便由系统自动引用实参变量。</code></pre>
+<p>(1)、O(1)</p>
+<p><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i = 1<span class="comment">;</span></span><br><span class="line">j = i<span class="comment">;</span></span><br><span class="line">Temp = x<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>以上三条单个语句的频度均为1，该程序段的执行时间是一个与问题规模n无关的常数。算法的时间复杂度为常数阶，记作T(n)=O(1)。注意：如果算法的执行时间不随着问题规模n的增加而增长，即使算法中有上千条语句，其执行时间也不过是一个较大的常数。此类算法的时间复杂度是O(1)。</p>
+<p>(2)、O(n2)</p>
+<p>2.1. 交换i和j的内容</p>
+<p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum=<span class="number">0</span>；                 （一次）  </span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">i</span>=<span class="number">1</span>;<span class="built_in">i</span>&lt;=n;<span class="built_in">i</span>++)     （n+<span class="number">1</span>次）  </span><br><span class="line">   <span class="keyword">for</span>(<span class="built_in">j</span>=<span class="number">1</span>;<span class="built_in">j</span>&lt;=n;<span class="built_in">j</span>++) （n2次）  </span><br><span class="line">    sum++；            （n2次)</span><br></pre></td></tr></table></figure></p>
+<p>解：因为Θ(2n2+n+1)=n2（Θ即：去低阶项，去掉常数项，去掉高阶项的常参得到），所以T(n)= =O(n2)；</p>
+<p>2.2.</p>
+<p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;n;i++)  </span><br><span class="line">&#123;   </span><br><span class="line">     y=y+<span class="number">1</span>;         ①     </span><br><span class="line">     <span class="keyword">for</span> (j=<span class="number">0</span>;j&lt;=(<span class="number">2</span>*n);j++)      </span><br><span class="line">        x++;         ②        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>解： 语句1的频度是n-1
+语句2的频度是(n-1) * (2n+1)=2n2-n-1
+f(n)=2n2-n-1+(n-1)=2n2-2；
+又Θ(2n2-2)=n2
+该程序的时间复杂度T(n)=O(n2).<br>
+　　一般情况下，对步进循环语句只需考虑循环体中语句的执行次数，忽略该语句中步长加1、终值判别、控制转移等成分，当有若干个循环语句时，算法的时间复杂度是由嵌套层数最多的循环语句中最内层语句的频度f(n)决定的。<br>
+<strong>(3)、O(n)</strong></p>
+<p><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">a</span>=<span class="number">0</span><span class="comment">;  </span></span><br><span class="line">  b=<span class="number">1</span><span class="comment">;         ①  </span></span><br><span class="line">  for (i=<span class="number">1</span><span class="comment">;i&lt;=n;i++) ②  </span></span><br><span class="line">  &#123;    </span><br><span class="line">     s=<span class="literal">a</span>+b<span class="comment">;　　　　③  </span></span><br><span class="line">     b=<span class="literal">a</span><span class="comment">;　　　　　④    </span></span><br><span class="line">     <span class="literal">a</span>=s<span class="comment">;　　　　　⑤  </span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>解： 语句1的频度：2,<br>
+语句2的频度： n,<br>
+语句3的频度： n-1,<br>
+语句4的频度：n-1,<br>
+语句5的频度：n-1,<br>
+T(n)=2+n+3(n-1)=4n-1=O(n).</p>
+<p><strong>(4)、O(log2n)</strong></p>
+<p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">i</span>=<span class="number">1</span>;     ①  </span><br><span class="line">hile (<span class="built_in">i</span>&lt;=n)  </span><br><span class="line"><span class="built_in">i</span>=<span class="built_in">i</span>*<span class="number">2</span>; ②</span><br></pre></td></tr></table></figure></p>
+<p>解： 语句1的频度是1,<br>
+设语句2的频度是f(n),   则：2^f(n)&lt;=n;f(n)&lt;=log2n<br>
+取最大值f(n)=log2n,
+T(n)=O(log2n )</p>
+<p><strong>(5)、O(n3)</strong></p>
+<pre><code>for(i=0;i&lt;n;i++)  
+   {    
+      for(j=0;j&lt;i;j++)    
+      {  
+         for(k=0;k&lt;j;k++)  
+            x=x+2;    
+      }  
+   }
+</code></pre>
+<p>解：当i=m, j=k的时候,内层循环的次数为k当i=m时, j 可以取 0,1,...,m-1 , 所以这里最内循环共进行了0+1+...+m-1=(m-1)m/2次所以,i从0取到n, 则循环共进行了: 0+(1-1)*1/2+...+(n-1)n/2=n(n+1)(n-1)/6所以时间复杂度为O(n3).</p>
+<ul>
+<li>常用的算法的时间复杂度和空间复杂度:<br>
+一个经验规则：其中c是一个常量，如果一个算法的复杂度为c 、 log2n 、n 、 n*log2n ,那么这个算法时间效率比较高 ，如果是2n ,3n ,n!，那么稍微大一些的n就会令这个算法不能动了，居于中间的几个则差强人意。<br>
+算法时间复杂度分析是一个很重要的问题，任何一个程序员都应该熟练掌握其概念和基本方法，而且要善于从数学层面上探寻其本质，才能准确理解其内涵。</li>
+</ul>
+<h4>算法的空间复杂度</h4>
+<p>类似于时间复杂度的讨论，一个算法的空间复杂度(Space Complexity)S(n)定义为该算法所耗费的存储空间，它也是问题规模n的函数。渐近空间复杂度也常常简称为空间复杂度。<br>
+空间复杂度(Space Complexity)是对一个算法在运行过程中临时占用存储空间大小的量度。一个算法在计算机存储器上所占用的存储空间，包括存储算法本身所占用的存储空间，算法的输入输出数据所占用的存储空间和算法在运行过程中临时占用的存储空间这三个方面。算法的输入输出数据所占用的存储空间是由要解决的问题决定的，是通过参数表由调用函数传递而来的，它不随本算法的不同而改变。存储算法本身所占用的存储空间与算法书写的长短成正比，要压缩这方面的存储空间，就必须编写出较短的算法。算法在运行过程中临时占用的存储空间随算法的不同而异，有的算法只需要占用少量的临时工作单元，而且不随问题规模的大小而改变，我们称这种算法是“就地&quot;进行的，是节省存储的算法，如这一节介绍过的几个算法都是如此；有的算法需要占用的临时工作单元数与解决问题的规模n有关，它随着n的增大而增大，当n较大时，将占用较多的存储单元，例如将在第九章介绍的快速排序和归并排序算法就属于这种情况。<br>
+如当一个算法的空间复杂度为一个常量，即不随被处理数据量n的大小而改变时，可表示为O(1)；当一个算法的空间复杂度与以2为底的n的对数成正比时，可表示为0(10g2n)；当一个算法的空I司复杂度与n成线性比例关系时，可表示为0(n).若形参为数组，则只需要为它分配一个存储由实参传送来的一个地址指针的空间，即一个机器字长空间；若形参为引用方式，则也只需要为其分配存储一个地址的空间，用它来存储对应实参变量的地址，以便由系统自动引用实参变量。</p>
 </div><div class="tags"><a href="/tags/space-complexity/">space complexity</a><a href="/tags/time-complexity/">time complexity</a></div><div class="post-nav"><a href="/2015/12/10/StringTokenizer的用法及示例/" class="next">StringTokenizer的用法及示例<i class="icon-next"></i></a></div><div id="disqus_thread"><script>var disqus_shortname = 'johnnymao';
 var disqus_identifier = '2015/12/14/转-时间复杂度与空间复杂度/';
 var disqus_title = '#转#时间复杂度与空间复杂度';
