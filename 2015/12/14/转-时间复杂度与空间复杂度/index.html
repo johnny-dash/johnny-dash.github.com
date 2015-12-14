@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="telephone=no" name="format-detection"/><meta name="description" content="Welcome to Johnny's world."/><title>#转#时间复杂度与空间复杂度 | Johnny Mao's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"/><link rel="stylesheet" type="text/css" href="/css/pure-min.css"/><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"/><link rel="stylesheet" type="text/css" href="/css/style.css"/><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">#转#时间复杂度与空间复杂度</h1><a id="logo" href="/">Johnny Mao's blog</a><p class="description">Be Perseverance</p></div><div id="nav-menu"><a href="/" class="current"><i class="icon-home"> Home</i></a><a href="/archives/"><i class="icon-archive"> Archive</i></a><a href="/about/"><i class="icon-about"> About</i></a><a href="/atom.xml"><i class="icon-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">#转#时间复杂度与空间复杂度</h1><div class="post-meta">2015-12-14 | <span class="categories">Categorized in<a href="/categories/Algorithm/"> Algorithm</a></span></div><span data-disqus-identifier="2015/12/14/转-时间复杂度与空间复杂度/" class="disqus-comment-count"></span><div class="post-content"><h1>求解算法的时间复杂度的具体步骤</h1>
+<ul>
+<li><strong>找出算法中的基本语句；</strong><br>
+算法中执行次数最多的那条语句就是基本语句，通常是最内层循环的循环体。</li>
+<li><strong>计算基本语句的执行次数的数量级；</strong><br>
+只需计算基本语句执行次数的数量级，这就意味着只要保证基本语句执行次数的函数中的最高次幂正确即可，可以忽略所有低次幂和最高次幂的系数。这样能够简化算法分析，并且使注意力集中在最重要的一点上：增长率。</li>
+<li><strong>用大Ο记号表示算法的时间性能。</strong><br>
+将基本语句执行次数的数量级放入大Ο记号中。<br>
+如果算法中包含嵌套的循环，则基本语句通常是最内层的循环体，如果算法中包含并列的循环，则将并列循环的时间复杂度相加。例如：</li>
+</ul>
+<p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">i</span>=<span class="number">1</span>; <span class="built_in">i</span>&lt;=n; <span class="built_in">i</span>++)  </span><br><span class="line">       x++;  </span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">i</span>=<span class="number">1</span>; <span class="built_in">i</span>&lt;=n; <span class="built_in">i</span>++)  </span><br><span class="line">    　<span class="keyword">for</span> (<span class="built_in">j</span>=<span class="number">1</span>; <span class="built_in">j</span>&lt;=n; <span class="built_in">j</span>++)  </span><br><span class="line">          x++;</span><br></pre></td></tr></table></figure></p>
+<p>第一个for循环的时间复杂度为Ο(n)，第二个for循环的时间复杂度为Ο(n2)，则整个算法的时间复杂度为Ο(n+n2)=Ο(n2)。<br>
+　　Ο(1)表示基本语句的执行次数是一个常数，一般来说，只要算法中不存在循环语句，其时间复杂度就是Ο(1)。其中Ο(log2n)、Ο(n)、 Ο(nlog2n)、Ο(n2)和Ο(n3)称为多项式时间，而Ο(2n)和Ο(n!)称为指数时间。计算机科学家普遍认为前者（即多项式时间复杂度的算法）是有效算法，把这类问题称为P（Polynomial,多项式）类问题，而把后者（即指数时间复杂度的算法）称为NP（Non-Deterministic Polynomial, 非确定多项式）问题。<br>
+　　一般来说多项式级的复杂度是可以接受的，很多问题都有多项式级的解——也就是说，这样的问题，对于一个规模是n的输入，在n^k的时间内得到结果，称为P问题。有些问题要复杂些，没有多项式时间的解，但是可以在多项式时间里验证某个猜测是不是正确。比如问4294967297是不是质数？如果要直接入手的话，那么要把小于4294967297的平方根的所有素数都拿出来，看看能不能整除。还好欧拉告诉我们，这个数等于641和6700417的乘积，不是素数，很好验证的，顺便麻烦转告费马他的猜想不成立。大数分解、Hamilton回路之类的问题，都是可以多项式时间内验证一个“解”是否正确，这类问题叫做NP问题。
+　　<br>
+<strong>在计算算法时间复杂度时有以下几个简单的程序分析法则:</strong></p>
+<ol>
+<li>对于一些简单的输入输出语句或赋值语句,近似认为需要O(1)时间</li>
+<li>对于顺序结构,需要依次执行一系列语句所用的时间可采用大O下&quot;求和法则&quot;
+求和法则:是指若算法的2个部分时间复杂度分别为 T1(n)=O(f(n))和 T2(n)=O(g(n)),则 T1(n)+T2(n)=O(max(f(n), g(n)))
+特别地,若T1(m)=O(f(m)), T2(n)=O(g(n)),则 T1(m)+T2(n)=O(f(m) + g(n))</li>
+<li>对于选择结构,如if语句,它的主要时间耗费是在执行then字句或else字句所用的时间,需注意的是检验条件也需要O(1)时间</li>
+<li>对于循环结构,循环语句的运行时间主要体现在多次迭代中执行循环体以及检验循环条件的时间耗费,一般可用大O下&quot;乘法法则&quot;
+乘法法则: 是指若算法的2个部分时间复杂度分别为 T1(n)=O(f(n))和 T2(n)=O(g(n)),则 T1 * T2=O(f(n) * g(n))</li>
+<li>对于复杂的算法,可以将它分成几个容易估算的部分,然后利用求和法则和乘法法则技术整个算法的时间复杂度
+另外还有以下2个运算法则:(1) 若g(n)=O(f(n)),则O(f(n))+ O(g(n))= O(f(n))；(2) O(Cf(n)) = O(f(n)),其中C是一个正常数</li>
+</ol>
+<h3>下面分别对几个常见的时间复杂度进行示例说明：</h3>
+<p><strong>(1)、O(1)</strong></p>
+<p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  Temp=<span class="built_in">i</span>; </span><br><span class="line">  <span class="built_in">i</span>=<span class="built_in">j</span>; </span><br><span class="line">  <span class="built_in">j</span>=temp;</span><br><span class="line">```        </span><br><span class="line">                            </span><br><span class="line">以上三条单个语句的频度均为<span class="number">1</span>，该程序段的执行时间是一个与问题规模n无关的常数。算法的时间复杂度为常数阶，记作T(n)=O(<span class="number">1</span>)。注意：如果算法的执行时间不随着问题规模n的增加而增长，即使算法中有上千条语句，其执行时间也不过是一个较大的常数。此类算法的时间复杂度是O(<span class="number">1</span>)。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**(<span class="number">2</span>)、O(n2)**  </span><br><span class="line"></span><br><span class="line"><span class="number">2.1</span>. 交换<span class="built_in">i</span>和<span class="built_in">j</span>的内容</span><br></pre></td></tr></table></figure></p>
+<p>sum=0；                 （一次）<br>
+for(i=1;i&lt;=n;i++)     （n+1次）<br>
+for(j=1;j&lt;=n;j++) （n2次）<br>
+sum++；            （n2次）
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">解：因为Θ(<span class="number">2</span>n2+n+<span class="number">1</span>)=n2（Θ即：去低阶项，去掉常数项，去掉高阶项的常参得到），所以<span class="function"><span class="title">T</span><span class="params">(n)</span></span>= =<span class="function"><span class="title">O</span><span class="params">(n2)</span></span>；  </span><br><span class="line"></span><br><span class="line"><span class="number">2.2</span>.</span><br></pre></td></tr></table></figure></p>
+<p>for (i=1;i&lt;n;i++)<br>
+{<br>
+y=y+1;         ①<br>
+for (j=0;j&lt;=(2*n);j++)<br>
+x++;         ②<br>
+}
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">            </span><br><span class="line">解： 语句<span class="number">1</span>的频度是n-<span class="number">1</span></span><br><span class="line">          语句<span class="number">2</span>的频度是(n-<span class="number">1</span>) * (<span class="number">2</span>n+<span class="number">1</span>)=<span class="number">2</span>n2-n-<span class="number">1</span></span><br><span class="line">          f(n)=<span class="number">2</span>n2-n-<span class="number">1</span>+(n-<span class="number">1</span>)=<span class="number">2</span>n2-<span class="number">2</span>；</span><br><span class="line">        又Θ(<span class="number">2</span>n2-<span class="number">2</span>)=n2</span><br><span class="line">          该程序的时间复杂度T(n)=O(n2).    </span><br><span class="line">　　一般情况下，对步进循环语句只需考虑循环体中语句的执行次数，忽略该语句中步长加<span class="number">1</span>、终值判别、控制转移等成分，当有若干个循环语句时，算法的时间复杂度是由嵌套层数最多的循环语句中最内层语句的频度f(n)决定的。       </span><br><span class="line">**(<span class="number">3</span>)、O(n)**</span><br></pre></td></tr></table></figure></p>
+<p>a=0;<br>
+b=1;         ①<br>
+for (i=1;i&lt;=n;i++) ②<br>
+{<br>
+s=a+b;　　　　③<br>
+b=a;　　　　　④<br>
+a=s;　　　　　⑤<br>
+}
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">解： 语句<span class="number">1</span>的频度：<span class="number">2</span>,        </span><br><span class="line">           语句<span class="number">2</span>的频度： n,        </span><br><span class="line">          语句<span class="number">3</span>的频度： n-<span class="number">1</span>,        </span><br><span class="line">          语句<span class="number">4</span>的频度：n-<span class="number">1</span>,    </span><br><span class="line">          语句<span class="number">5</span>的频度：n-<span class="number">1</span>,                                  </span><br><span class="line">          T(n)=<span class="number">2</span>+n+<span class="number">3</span>(n-<span class="number">1</span>)=<span class="number">4</span>n-<span class="number">1</span>=O(n).</span><br><span class="line">          </span><br><span class="line">          </span><br><span class="line">**(<span class="number">4</span>)、O(log2n)**</span><br></pre></td></tr></table></figure></p>
+<p>i=1;     ①<br>
+hile (i&lt;=n)<br>
+i=i*2; ②
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">解： 语句1的频度是1,  </span><br><span class="line">          设语句2的频度是<span class="literal">f</span>(<span class="keyword">n</span>),   则：2^<span class="literal">f</span>(<span class="keyword">n</span>)&lt;=<span class="keyword">n</span>;<span class="literal">f</span>(<span class="keyword">n</span>)&lt;=log2n    </span><br><span class="line">          取最大值<span class="literal">f</span>(<span class="keyword">n</span>)=log2n,</span><br><span class="line">          T(<span class="keyword">n</span>)=O(log2n )</span><br><span class="line"></span><br><span class="line"><span class="comment">**(5)、O(n3)**</span></span><br></pre></td></tr></table></figure></p>
+<p>for(i=0;i&lt;n;i++)<br>
+{<br>
+for(j=0;j&lt;i;j++)<br>
+{<br>
+for(k=0;k&lt;j;k++)<br>
+x=x+2;<br>
+}<br>
+}</p>
+<pre><code> 
+解：当i=m, j=k的时候,内层循环的次数为k当i=m时, j 可以取 0,1,...,m-1 , 所以这里最内循环共进行了0+1+...+m-1=(m-1)m/2次所以,i从0取到n, 则循环共进行了: 0+(1-1)*1/2+...+(n-1)n/2=n(n+1)(n-1)/6所以时间复杂度为O(n3).
+
+* 常用的算法的时间复杂度和空间复杂度:  
+  一个经验规则：其中c是一个常量，如果一个算法的复杂度为c 、 log2n 、n 、 n*log2n ,那么这个算法时间效率比较高 ，如果是2n ,3n ,n!，那么稍微大一些的n就会令这个算法不能动了，居于中间的几个则差强人意。  
+  算法时间复杂度分析是一个很重要的问题，任何一个程序员都应该熟练掌握其概念和基本方法，而且要善于从数学层面上探寻其本质，才能准确理解其内涵。  
+  
+## 算法的空间复杂度  
+类似于时间复杂度的讨论，一个算法的空间复杂度(Space Complexity)S(n)定义为该算法所耗费的存储空间，它也是问题规模n的函数。渐近空间复杂度也常常简称为空间复杂度。  
+空间复杂度(Space Complexity)是对一个算法在运行过程中临时占用存储空间大小的量度。一个算法在计算机存储器上所占用的存储空间，包括存储算法本身所占用的存储空间，算法的输入输出数据所占用的存储空间和算法在运行过程中临时占用的存储空间这三个方面。算法的输入输出数据所占用的存储空间是由要解决的问题决定的，是通过参数表由调用函数传递而来的，它不随本算法的不同而改变。存储算法本身所占用的存储空间与算法书写的长短成正比，要压缩这方面的存储空间，就必须编写出较短的算法。算法在运行过程中临时占用的存储空间随算法的不同而异，有的算法只需要占用少量的临时工作单元，而且不随问题规模的大小而改变，我们称这种算法是“就地\&quot;进行的，是节省存储的算法，如这一节介绍过的几个算法都是如此；有的算法需要占用的临时工作单元数与解决问题的规模n有关，它随着n的增大而增大，当n较大时，将占用较多的存储单元，例如将在第九章介绍的快速排序和归并排序算法就属于这种情况。  
+如当一个算法的空间复杂度为一个常量，即不随被处理数据量n的大小而改变时，可表示为O(1)；当一个算法的空间复杂度与以2为底的n的对数成正比时，可表示为0(10g2n)；当一个算法的空I司复杂度与n成线性比例关系时，可表示为0(n).若形参为数组，则只需要为它分配一个存储由实参传送来的一个地址指针的空间，即一个机器字长空间；若形参为引用方式，则也只需要为其分配存储一个地址的空间，用它来存储对应实参变量的地址，以便由系统自动引用实参变量。</code></pre>
+</div><div class="tags"><a href="/tags/space-complexity/">space complexity</a><a href="/tags/time-complexity/">time complexity</a></div><div class="post-nav"><a href="/2015/12/10/StringTokenizer的用法及示例/" class="next">StringTokenizer的用法及示例<i class="icon-next"></i></a></div><div id="disqus_thread"><script>var disqus_shortname = 'johnnymao';
+var disqus_identifier = '2015/12/14/转-时间复杂度与空间复杂度/';
+var disqus_title = '#转#时间复杂度与空间复杂度';
+var disqus_url = 'http://yoursite.com/2015/12/14/转-时间复杂度与空间复杂度/';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//johnnymao.disqus.com/count.js" async="async"></script></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title">Categories</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li></ul></div><div class="widget"><div class="widget-title">Tags</div><div class="tagcloud"><a href="/tags/HTML-Tag/" style="font-size: 15px;">HTML Tag</a> <a href="/tags/time-complexity/" style="font-size: 15px;">time complexity</a> <a href="/tags/space-complexity/" style="font-size: 15px;">space complexity</a> <a href="/tags/StringTokenizer/" style="font-size: 15px;">StringTokenizer</a></div></div><div class="widget"><div class="widget-title">Recent</div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2015/12/14/转-时间复杂度与空间复杂度/">#转#时间复杂度与空间复杂度</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/10/StringTokenizer的用法及示例/">StringTokenizer的用法及示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/10/HTML-Tag-Tips/">HTML Tag Tips</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/09/about/">about</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/08/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title">Recent Comments</div><script type="text/javascript" src="//johnnymao.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title">Blogroll</div><ul></ul><a href="http://www.genosage.com/" title="张老板的秘密花园" target="_blank">张老板的秘密花园</a></div></div></div></div><div id="footer">© <a href="/" rel="nofollow">Johnny Mao's blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> </a><div class="analytics"><script>var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1256929604'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256929604%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script></div></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
+<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"></div></body></html>
