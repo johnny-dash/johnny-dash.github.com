@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="telephone=no" name="format-detection"/><meta name="description" content="Welcome to Johnny's world."/><title>Unity Tips | Johnny Mao's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"/><link rel="stylesheet" type="text/css" href="/css/pure-min.css"/><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"/><link rel="stylesheet" type="text/css" href="/css/style.css"/><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Unity Tips</h1><a id="logo" href="/">Johnny Mao's blog</a><p class="description">Be Perseverance</p></div><div id="nav-menu"><a href="/" class="current"><i class="icon-home"> Home</i></a><a href="/archives/"><i class="icon-archive"> Archive</i></a><a href="/about/"><i class="icon-about"> About</i></a><a href="/atom.xml"><i class="icon-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">Unity Tips</h1><div class="post-meta">2016-04-04 | <span class="categories">Categorized in<a href="/categories/Unity/"> Unity</a></span></div><span data-disqus-identifier="2016/04/04/Unity-Tips/" class="disqus-comment-count"></span><div class="post-content"><p>##Vector3</p>
-<p>###Vector3.Dot
-Description:</p>
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="telephone=no" name="format-detection"/><meta name="description" content="Welcome to Johnny's world."/><title>Unity Tips | Johnny Mao's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"/><link rel="stylesheet" type="text/css" href="/css/pure-min.css"/><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"/><link rel="stylesheet" type="text/css" href="/css/style.css"/><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Unity Tips</h1><a id="logo" href="/">Johnny Mao's blog</a><p class="description">Be Perseverance</p></div><div id="nav-menu"><a href="/" class="current"><i class="icon-home"> Home</i></a><a href="/archives/"><i class="icon-archive"> Archive</i></a><a href="/about/"><i class="icon-about"> About</i></a><a href="/atom.xml"><i class="icon-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">Unity Tips</h1><div class="post-meta">2016-04-04 | <span class="categories">Categorized in<a href="/categories/Unity/"> Unity</a></span></div><span data-disqus-identifier="2016/04/04/Unity-Tips/" class="disqus-comment-count"></span><div class="post-content"><h2>Vector2</h2>
+<h3>Vector2.Dot</h3>
+<p>Description:</p>
 <p>Vector A (x,y,z)
 Vector B (x,y,z)</p>
 <p>The dot product of Vector A and Vector B is
@@ -8,15 +8,49 @@ Vector B (x,y,z)</p>
 <p>This Value is usually check if this two vectors are perpendicular:</p>
 <ul>
 <li>If the result is 0. Then this two vectors are perpendicular;</li>
-<li>If the result is positive. Then the angle between vectors is less than 90;</li>
-<li>If the result is negitive. Then the angle between vectors is more than 90;</li>
+<li>If the result is 1. Then they point in exactly the same direction;</li>
+<li>If the result is -1. Then they point in exactly the opposite direction;</li>
+<li>For vectors of arbitrary length the Dot return values are similar: they get larger when the angle between vectors decreases.</li>
 </ul>
-<p>###Vector3.sqrMagnitude
-Description:
+<h2>Vector3</h2>
+<h3>Vector3.sqrMagnitude</h3>
+<p>Description:
 Returns the squared length of this vector (Read Only).</p>
 <p>The magnitude of a vector v is calculated as Mathf.Sqrt(Vector3.Dot(v, v)). However, the Sqrt calculation is quite complicated and takes longer to execute than the normal arithmetic operations. Calculating the squared magnitude instead of using the magnitude property is much faster - the calculation is basically the same only without the slow Sqrt call. If you are using magnitudes simply to compare distances, then you can just as well compare squared magnitudes against the squares of distances since the comparison will give the same result.</p>
 <p>(See Also as magnitude)</p>
 <p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> ExampleClass : MonoBehaviour &#123;</span><br><span class="line">    <span class="keyword">public</span> Transform other;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> closeDistance = <span class="number">5.0F</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (other) &#123;</span><br><span class="line">            Vector3 offset = other.position - transform.position;</span><br><span class="line">            <span class="keyword">float</span> sqrLen = offset.sqrMagnitude;</span><br><span class="line">            <span class="keyword">if</span> (sqrLen &lt; closeDistance * closeDistance)</span><br><span class="line">                print(<span class="string">"The other transform is close to me!"</span>);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3>Vector3.normalized</h3>
+<p>Description:
+Returns this vector with a magnitude of 1 (Read Only).</p>
+<p>When normalized, a vector keeps the same direction but its length is 1.0.</p>
+<p>Note that the current vector is unchanged and a new normalized vector is returned. If you want to normalize the current vector, use Normalize function.</p>
+<p>If the vector is too small to be normalized a zero vector will be returned.</p>
+<h3>Vector3.Cross</h3>
+<p>Description:
+The input of this function is two vectors and the return is the third vector which perpendicular to each of input vectors(Like perpendicular the surface create by these two vectors)</p>
+<p>The result's magnitude is equal to the magnitudes of the two inputs multiplied together and then multiplied by the sine of the angle between the inputs. You can determine the direction of the result vector using the &quot;left hand rule&quot;.</p>
+<p><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="function">Vector3 <span class="title">GetNormal</span>(<span class="params">Vector3 a, Vector3 b, Vector3 c</span>) </span>&#123;</span><br><span class="line">        Vector3 side1 = b - a;</span><br><span class="line">        Vector3 side2 = c - a;</span><br><span class="line">        <span class="keyword">return</span> Vector3.Cross(side1, side2).normalized;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2>Transform</h2>
+<p>Description:
+Position, rotation and scale of an object.</p>
+<p>Every object in a scene has a Transform. It's used to store and manipulate the position, rotation and scale of the object. Every Transform can have a parent, which allows you to apply position, rotation and scale hierarchically. This is the hierarchy seen in the Hierarchy pane.
+<a href="https://unity3d.com/cn/learn/tutorials/modules/beginner/scripting/translate-and-rotate?playlist=17117" target="_blank" rel="external">https://unity3d.com/cn/learn/tutorials/modules/beginner/scripting/translate-and-rotate?playlist=17117</a></p>
+<h3>Transform.Translate</h3>
+<p>Description:</p>
+<p>Moves the transform in the direction and distance of translation.
+<a href="http://docs.unity3d.com/ScriptReference/Transform.Translate.html" target="_blank" rel="external">http://docs.unity3d.com/ScriptReference/Transform.Translate.html</a></p>
+<h3>Transform.Rotate</h3>
+<p>Description:</p>
+<p>Rotate the object in different methods.
+<a href="http://docs.unity3d.com/ScriptReference/Transform.Rotate.html" target="_blank" rel="external">http://docs.unity3d.com/ScriptReference/Transform.Rotate.html</a></p>
+<h3>Tranform.AddForce</h3>
+<p>Description:</p>
+<p>You can choose different mode of force to change the Acceleration, Impulse or Velocity Change.</p>
+<p><a href="http://docs.unity3d.com/ScriptReference/Rigidbody.AddForce.html" target="_blank" rel="external">http://docs.unity3d.com/ScriptReference/Rigidbody.AddForce.html</a></p>
+<h3>Tranfrom.AddTorque</h3>
+<p>Description:</p>
+<p>You can add a torque when rotate the rigidbody.</p>
+<p><a href="http://docs.unity3d.com/ScriptReference/Rigidbody.AddTorque.html" target="_blank" rel="external">http://docs.unity3d.com/ScriptReference/Rigidbody.AddTorque.html</a></p>
 </div><div class="tags"><a href="/tags/unity-script/">unity script</a></div><div class="post-nav"><a href="/2016/03/10/Unity碰撞检测中碰撞器与触发器的区别/" class="next">Unity碰撞检测中碰撞器与触发器的区别<i class="icon-next"></i></a></div><div id="disqus_thread"><script>var disqus_shortname = 'johnnymao';
 var disqus_identifier = '2016/04/04/Unity-Tips/';
 var disqus_title = 'Unity Tips';
