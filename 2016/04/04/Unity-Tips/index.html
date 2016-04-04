@@ -1,45 +1,26 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="telephone=no" name="format-detection"/><meta name="description" content="Welcome to Johnny's world."/><title>StringTokenizer的用法及示例 | Johnny Mao's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"/><link rel="stylesheet" type="text/css" href="/css/pure-min.css"/><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"/><link rel="stylesheet" type="text/css" href="/css/style.css"/><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">StringTokenizer的用法及示例</h1><a id="logo" href="/">Johnny Mao's blog</a><p class="description">Be Perseverance</p></div><div id="nav-menu"><a href="/" class="current"><i class="icon-home"> Home</i></a><a href="/archives/"><i class="icon-archive"> Archive</i></a><a href="/about/"><i class="icon-about"> About</i></a><a href="/atom.xml"><i class="icon-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">StringTokenizer的用法及示例</h1><div class="post-meta">2015-12-10 | <span class="categories">Categorized in<a href="/categories/Java/"> Java</a></span></div><span data-disqus-identifier="2015/12/10/StringTokenizer的用法及示例/" class="disqus-comment-count"></span><div class="post-content"><p>StringTokenizer类：根据自定义字符为分界符进行拆分，并将结果进行封装提供对应方法进行遍历取值， StringTokenizer 方法不区分标识符、数和带引号的字符串，它们也不识别并跳过注释；该方法用途类似于split方法，只是对结果进行了封装；</p>
-<p>帮助文档上对此进行了说明：</p>
-<p>StringTokenizer 是出于兼容性的原因而被保留的遗留类（虽然在新代码中并不鼓励使用它）。建议所有寻求此功能的人使用 String 的 split 方法或 java.util.regex 包。</p>
-<pre><code> 构造器： 
- · public StringTokenizer(String str,String delim,boolean returnTokens); 
- · public StringTokenizer(String str,String delim); 
- · public StringTokenizer(String str); 
- 其中，str为需分析的字符串，delim为定界符，定界符里面的任何一个字符都是分隔符，如&quot;+-*/   &quot;表示碰到&quot;+-*/   &quot;中的任何一个都认为是到达了分隔符了。   
- 常用的方法有： 
- · public boolean hasMoreTokens(); //判断字符串中是含还有token 
- · public String nextToken(); //StringTokenizer对象中的下一个token。 
- · public String nextToken(String delim) //delim为新的定界符
-
-  public boolean hasMoreElements ()
-</code></pre>
-<p>StringTokenizer (Java Platform SE 6)</p>
-<pre><code>  public Object nextElement ()  //除返回结果类型外，其返回与 nextToken 方法相同的值
-</code></pre>
-<p>在例中，使用StringTokenizer类将字符串“hello,java,delphi,asp,php”分解为三个单词。</p>
-<p>【例】
-impoort java.util.*;
-public class StringTokenizer Demo
-{
-public static void main(String[] args)
-{
-String str＝&quot; hello,java,delphi,asp,php&quot;;
-StringTokenizer st=new StringTokenizer(str,&quot;,&quot;);
-while(st.hasMoreTokens()) {
-System.out.println(st.nextToken());
-}
-}
-}
-程序的运行结果为:
-hello
-java
-delphi
-asp</p>
-<pre><code>     php</code></pre>
-</div><div class="tags"><a href="/tags/StringTokenizer/">StringTokenizer</a></div><div class="post-nav"><a href="/2015/12/14/转-时间复杂度与空间复杂度/" class="pre"><i class="icon-previous">#转#时间复杂度与空间复杂度</i></a><a href="/2015/12/10/HTML-Tag-Tips/" class="next">HTML Tag Tips<i class="icon-next"></i></a></div><div id="disqus_thread"><script>var disqus_shortname = 'johnnymao';
-var disqus_identifier = '2015/12/10/StringTokenizer的用法及示例/';
-var disqus_title = 'StringTokenizer的用法及示例';
-var disqus_url = 'http://yoursite.com/2015/12/10/StringTokenizer的用法及示例/';
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="telephone=no" name="format-detection"/><meta name="description" content="Welcome to Johnny's world."/><title>Unity Tips | Johnny Mao's blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"/><link rel="stylesheet" type="text/css" href="/css/pure-min.css"/><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"/><link rel="stylesheet" type="text/css" href="/css/style.css"/><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Unity Tips</h1><a id="logo" href="/">Johnny Mao's blog</a><p class="description">Be Perseverance</p></div><div id="nav-menu"><a href="/" class="current"><i class="icon-home"> Home</i></a><a href="/archives/"><i class="icon-archive"> Archive</i></a><a href="/about/"><i class="icon-about"> About</i></a><a href="/atom.xml"><i class="icon-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post post-page"><h1 class="post-title">Unity Tips</h1><div class="post-meta">2016-04-04 | <span class="categories">Categorized in<a href="/categories/Unity/"> Unity</a></span></div><span data-disqus-identifier="2016/04/04/Unity-Tips/" class="disqus-comment-count"></span><div class="post-content"><p>##Vector3</p>
+<p>###Vector3.Dot
+Description:</p>
+<p>Vector A (x,y,z)
+Vector B (x,y,z)</p>
+<p>The dot product of Vector A and Vector B is
+(Ax * Bx) + (Ay * By) + (Az * Bz) = Doc Product</p>
+<p>This Value is usually check if this two vectors are perpendicular:</p>
+<ul>
+<li>If the result is 0. Then this two vectors are perpendicular;</li>
+<li>If the result is positive. Then the angle between vectors is less than 90;</li>
+<li>If the result is negitive. Then the angle between vectors is more than 90;</li>
+</ul>
+<p>###Vector3.sqrMagnitude
+Description:
+Returns the squared length of this vector (Read Only).</p>
+<p>The magnitude of a vector v is calculated as Mathf.Sqrt(Vector3.Dot(v, v)). However, the Sqrt calculation is quite complicated and takes longer to execute than the normal arithmetic operations. Calculating the squared magnitude instead of using the magnitude property is much faster - the calculation is basically the same only without the slow Sqrt call. If you are using magnitudes simply to compare distances, then you can just as well compare squared magnitudes against the squares of distances since the comparison will give the same result.</p>
+<p>(See Also as magnitude)</p>
+<p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> ExampleClass : MonoBehaviour &#123;</span><br><span class="line">    <span class="keyword">public</span> Transform other;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> closeDistance = <span class="number">5.0F</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (other) &#123;</span><br><span class="line">            Vector3 offset = other.position - transform.position;</span><br><span class="line">            <span class="keyword">float</span> sqrLen = offset.sqrMagnitude;</span><br><span class="line">            <span class="keyword">if</span> (sqrLen &lt; closeDistance * closeDistance)</span><br><span class="line">                print(<span class="string">"The other transform is close to me!"</span>);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</div><div class="tags"><a href="/tags/unity-script/">unity script</a></div><div class="post-nav"><a href="/2016/03/10/Unity碰撞检测中碰撞器与触发器的区别/" class="next">Unity碰撞检测中碰撞器与触发器的区别<i class="icon-next"></i></a></div><div id="disqus_thread"><script>var disqus_shortname = 'johnnymao';
+var disqus_identifier = '2016/04/04/Unity-Tips/';
+var disqus_title = 'Unity Tips';
+var disqus_url = 'http://yoursite.com/2016/04/04/Unity-Tips/';
 (function() {
   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
